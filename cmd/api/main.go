@@ -21,13 +21,10 @@ func main() {
 	//connect to the db
 
 	app.Domain = "example.com"
-
-	log.Println("Started app on port", port)
-
-	http.HandleFunc("/", Hello)
-
+	
 	//start a web server
-	err := http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
+	log.Println("Started app on port", port)
+	err := http.ListenAndServe(fmt.Sprintf(":%d", port), app.routes())
 
 	if err != nil {
 		log.Fatal(err)
